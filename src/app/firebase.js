@@ -1,10 +1,12 @@
 // ./src/app/firebase.js
 const admin = require("firebase-admin");
-const serviceAccount = require("C:/Users/maxim/Desktop/editor/src/app/editor-1a339-firebase-adminsdk-5poag-294ea84f5a.json");
+const serviceAccount = require("C:/Users/maxim/Desktop/editor/src/app/editor-1a339-firebase_key.json");
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "C:/Users/maxim/Desktop/editor/src/app/editor-1a339-firebase_key.json";
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://console.firebase.google.com/u/0/project/editor-1a339/firestore/databases/-default-/data/~2Fnews~2FCou38Y0LkAfv2opKQ01w",
+  databaseURL: "https://editor-1a339.firebaseio.com",
 });
 
-module.exports = admin;
+const db = admin.firestore();
+module.exports = db; 
